@@ -20,6 +20,8 @@ public class BookController {
 	@Autowired
 	private BookRepository repository;
 	private CategoryRepository crepository;
+	
+	//Show all books
 
 	@RequestMapping("/booklist")
 	public String bookList(Model model) {
@@ -27,20 +29,24 @@ public class BookController {
 		return "booklist";
 
 	}
-
+	//Add new books
+	
 	@RequestMapping(value = "/add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
 		model.addAttribute("categories", crepository.findAll());
 		return "addbook";
 	}
-
-
+	
+	//Save new book
+	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Book book) {
 		repository.save(book);
 		return "redirect:booklist";
 	}
+	
+	//Delete book
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
