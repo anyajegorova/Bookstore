@@ -22,7 +22,7 @@ public class CategoryRepositoryTest {
 	
 	@Test
 	public void findByNameReturnsCategory() {
-		List<Category> categories = repository.findByName("Fantasy Fiction");
+		List<Category> categories = repository.findByName("Fantasy");
 		assertThat(categories.get(1).getCategoryId()).isEqualTo(2);
 		
 	}

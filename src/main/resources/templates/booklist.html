@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <title>Book List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -31,10 +30,10 @@
 				<th>ISBN</th>
 				<th>Price</th>
 				<th>Category</th>
-				<th sec:authorize="hasAuthority('Admin')"></th>
+				<th sec:authorize="hasRole('ADMIN')"> </th>
 			
 			</tr>
-			<tbody>
+			
 				<tr th:each="book: ${books}">
 					<td th:text="${book.title}"></td>
 					<td th:text="${book.author}"></td>
@@ -42,17 +41,16 @@
 					<td th:text="${book.isbn}"></td>
 					<td th:text="${book.price + ' EUR'} "></td>
 					<td th:text="${book.category.name}"></td>
-					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-xs btn-danger">Delete</a></td>  
-
-
+					<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-xs btn-danger">Delete</a></td>  
 
 				</tr>
 
-			</tbody>
+			
 
 		</table>
 
 		<a href="/add" class="btn btn-success">Add Book</a>
+		
 	</div>
 </body>
 </html>
