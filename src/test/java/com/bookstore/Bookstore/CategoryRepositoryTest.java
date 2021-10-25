@@ -16,7 +16,6 @@ import static org.assertj.core.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-
 public class CategoryRepositoryTest {
 	@Autowired
 	private CategoryRepository repository;
@@ -24,7 +23,7 @@ public class CategoryRepositoryTest {
 	@Test
 	public void findByNameReturnsCategory() {
 		List<Category> categories = repository.findByName("Fantasy Fiction");
-		assertThat(categories.get(1).getId()).isEqualTo(2);
+		assertThat(categories.get(1).getCategoryId()).isEqualTo(2);
 		
 	}
 	
