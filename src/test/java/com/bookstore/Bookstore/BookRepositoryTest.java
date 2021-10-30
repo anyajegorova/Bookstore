@@ -24,7 +24,7 @@ public class BookRepositoryTest {
 	@Test
 	public void findByTitleShouldReturnBook() {
 		List<Book> books = repository.findByTitle("Lolita");
-		assertThat(books.get(1).getAuthor()).isEqualTo("V.Nabokov");
+		assertThat(books.get(0).getAuthor()).isEqualTo("V.Nabokov");
 		
 	}
 
